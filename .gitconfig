@@ -1,0 +1,7 @@
+[user]
+  name = Helen Hastings
+  email = helenh@cs.stanford.edu
+
+[core]
+  editor = emacs
+  excludesfile = ./gitignore
