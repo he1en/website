@@ -27,6 +27,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/users', users);
 
+// to import from node modules
+app.use('/bootstrap',
+	express.static(path.join(__dirname, 'node_modules/bootstrap/dist/')));
+
+// host resume
+app.use('/resume', function(req, res) {
+    res.redirect('/resume.pdf')
+});
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
