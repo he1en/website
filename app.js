@@ -28,6 +28,13 @@ app.get('/', function(req, res) {
     res.render('index.ejs', {content: React.renderToString(Home({}))});
 });
 
+
+// Gender research.
+app.get('/gender', function(req, res) {
+    var Gender = React.createFactory(require('./client/components/gender/landing.jsx'));
+    res.render('index.ejs', {content: React.renderToString(Gender({}))});
+});
+
 // to import from node modules
 app.use('/bootstrap',
 	express.static(path.join(__dirname, 'node_modules/bootstrap/dist/')));
