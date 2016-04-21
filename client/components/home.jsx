@@ -26,7 +26,7 @@ var Home = React.createClass({
       <div>
         <h1 className='main-hello'>Hi, I'm Helen.</h1>
           <h4 className='under-hello'>I'm a student and software engineer.</h4>
-          <h4 className='email-hello'>Reach me at helenh (at) cs (dot) stanford (dot) edu.</h4>
+          <h4 className='email-hello'>While I clean things up around here, reach me at helenh (at) cs (dot) stanford (dot) edu.</h4>
           <div className='link-container'>
             <Grid>
               <Row>
