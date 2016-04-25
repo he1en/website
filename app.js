@@ -7,7 +7,11 @@ var bodyParser = require('body-parser')
 var env = require('node-env-file')
 env(__dirname + '/.env')
 require('node-jsx').install()
-var React = require('react/addons')
+var React = require('react')
+var Router = require('react-router')
+var RouterContext = Router.RoutingContext
+var ReactDOMServer = require('react-dom/server')
+var routes = require('./routes')
 
 var app = express()
 
@@ -22,12 +26,6 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 
-// Main site content here.
-app.get('/', function (req, res) {
-  var Home = React.createFactory(require('./client/components/home.jsx'))
-  res.render('index.ejs', {content: React.renderToString(Home({}))})
-})
-
 // to import from node modules
 app.use('/bootstrap',
 	express.static(path.join(__dirname, 'node_modules/bootstrap/dist/')))
@@ -36,6 +34,36 @@ app.use('/bootstrap',
 app.use('/resume', function (req, res) {
   res.redirect('/resume.pdf')
 })
+
+// Main site content here.
+function router (req, res) {
+  Router.match({
+    routes: routes,
+    location: req.url
+  }, function (err, redirectLocation, renderProps) {
+    if (redirectLocation) {
+      res.redirect(301, redirectLocation.pathname + redirectLocation.search)
+    } else if (err) {
+      res.send(500, err.message)
+    } else if (renderProps === null) {
+      res.status(404)
+        .send('Not found')
+    } else {
+      res.render('index.ejs', {content: ReactDOMServer.renderToString(
+        React.createElement(RouterContext,
+                            {router: renderProps.router,
+                             routes: renderProps.routes,
+                             params: renderProps.params,
+                             location: renderProps.location,
+                             components: renderProps.components,
+                             history: renderProps.history,
+                             matchContext: renderProps.matchContext
+                            })
+       ) })
+    }
+  })
+}
+app.use(router)
 
 // set 404
 app.get('*', function (req, res) {

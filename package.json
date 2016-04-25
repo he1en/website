@@ -12,9 +12,13 @@
     "express": "~4.13.1",
     "morgan": "~1.6.1",
     "serve-favicon": "~2.3.0",
-    "react": "~0.13.3",
-    "react-bootstrap": "~0.25.2",
-    "ejs": "~2.3.4"
+    "ejs": "~2.3.4",
+    "reactify": "~1.1.1",
+    "react": "~15.0.1",
+    "react-bootstrap": "~0.29.2",
+    "history": "~1.17.0",
+    "react-router": "~1.0.0",
+    "react-dom": "~15.0.1"
   },
   "devDependencies": {
     "node-jsx": "~0.2.0",

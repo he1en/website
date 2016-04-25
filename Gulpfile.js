@@ -24,7 +24,9 @@ gulp.task('javascript', function () {
 // Browserify the source tree into a client-side library
 function browserifyTask () {
   return gulp.src('main.js')
-    .pipe(browserify())
+    .pipe(browserify(
+      { transform: [ 'reactify' ] }
+    ))
     .pipe(rename('main.js'))
     .pipe(gulp.dest('public/'))
     .pipe(uglify())
