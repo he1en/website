@@ -20,7 +20,7 @@ module.exports = [
     description: 'A tech company is planning to design a wearable to detect early signs of heart disease. Recognizing that men and women have different patterns of heart disease can enhance the usability and uptake of the device. For men’s and women’s differing patterns of heart disease:'
   },
   {
-    id: 'auto',
+    id: 'automobile',
     name: 'Automobile Safety',
     description: 'Conventional seatbelts do not fit pregnant women properly, and motor vehicle crashes are the leading cause of fetal death related to maternal trauma. Gendered innovations have led to the development of pregnant crash test dummies that enhance safety in automobile testing and design. For pregnant crash test dummies:'
   },
