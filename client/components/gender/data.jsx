@@ -7,12 +7,27 @@ var Chart = require('./chart.js')
 
 var Data = React.createClass({
 
+  getDefaultProps: function () {
+    return {
+      lineGraphs: ['function']
+    }
+  },
+
+  renderLineGraphs: function () {
+    return this.props.lineGraphs.map(function (graphName) {
+      return (
+        <Chart name={graphName} />
+      )
+    })
+  },
+
   renderSideBar: function () {
     var style = {
       position: 'absolute',
       right: '100px',
       top: '250px'
     }
+
     return (
       <div>
         <ButtonGroup vertical style={style}>
@@ -34,7 +49,7 @@ var Data = React.createClass({
     return (
       <div>
         <h4>Visualizing the research, disaggregated by trait.</h4>
-        <Chart />
+        {this.renderLineGraphs()}
         {this.renderSideBar()}
       </div>
     )

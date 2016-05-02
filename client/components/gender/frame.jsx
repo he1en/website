@@ -32,7 +32,6 @@ var Frame = React.createClass({
   },
 
   renderBody: function () {
-    console.dir(this.props.params)
     if (this.state.tab === 0) {
       return (<Data />)
     }
