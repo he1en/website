@@ -7,6 +7,10 @@ var Chart = require('./chart.js')
 
 var Data = React.createClass({
 
+  propTypes: {
+    lineGraphs: React.PropTypes.array
+  },
+
   getDefaultProps: function () {
     return {
       lineGraphs: ['function']

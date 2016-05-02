@@ -11,28 +11,30 @@ var Chart = React.createClass({
   getInitialState: function () {
     return {
       maleData:
-        require('../../../public/resources/' + this.props.name + '_male.js')
+        require('../../../public/resources/' + this.props.name + '_male.js'),
+      femaleData:
+        require('../../../public/resources/' + this.props.name + '_female.js')
     }
   },
 
-  render: function () {
+  renderChart: function () {
     // define dimensions of graph
     var m = [80, 80, 80, 80] // margins
     var w = 800 - m[1] - m[3] // width
     var h = 400 - m[0] - m[2] // height
 
   // X scale will fit all values from data[] within pixels 0-w
-    var x = d3.scale.linear().domain([0, 10]).range([0, w])
+    var x = d3.scale.linear().domain([1, 10]).range([0, w])
     var y = d3.scale.linear().domain([0, 0.2]).range([h, 0])
 
     // create a line function that can convert data[] into x and y points
     var lineFn = d3.svg.line()
       // assign the X function to plot our line as we wish
       .x(function (d) {
-        return x(d.Male)
+        return x(d.val)
       })
       .y(function (d) {
-        return y(d.Distribution)
+        return y(d.cdf)
       })
 
     // Add an SVG element with the desired dimensions and margin.
@@ -66,8 +68,24 @@ var Chart = React.createClass({
       .attr('stroke', 'steelblue')
       .attr('stroke-width', 2)
       .attr('fill', 'none')
+    graph.append('svg:path')
+        .attr('d', lineFn(this.state.femaleData))
+        .attr('stroke', 'crimson')
+        .attr('stroke-width', 2)
+        .attr('fill', 'none')
 
     return svg.node().toReact()
+  },
+
+  render: function () {
+    var title = this.props.name.charAt(0).toUpperCase() +
+                this.props.name.slice(1)
+    return (
+      <div>
+        <h4> { title + ' data'}</h4>
+        { this.renderChart() }
+      </div>
+    )
   }
 })
 
