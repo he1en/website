@@ -5,21 +5,23 @@ var ReactFauxDOM = require('react-faux-dom')
 var Chart = React.createClass({
 
   propTypes: {
-    name: React.PropTypes.string.isRequired
+    name: React.PropTypes.string.isRequired,
+    id: React.PropTypes.string.isRequired,
+    description: React.PropTypes.string.isRequired
   },
 
   getInitialState: function () {
     return {
       maleData:
-        require('../../../public/resources/' + this.props.name + '_male.js'),
+        require('../../../public/resources/' + this.props.id + '_male.js'),
       femaleData:
-        require('../../../public/resources/' + this.props.name + '_female.js')
+        require('../../../public/resources/' + this.props.id + '_female.js')
     }
   },
 
   renderChart: function () {
     // define dimensions of graph
-    var m = [80, 80, 80, 80] // margins
+    var m = [10, 80, 80, 80] // margins
     var w = 800 - m[1] - m[3] // width
     var h = 400 - m[0] - m[2] // height
 
@@ -78,11 +80,10 @@ var Chart = React.createClass({
   },
 
   render: function () {
-    var title = this.props.name.charAt(0).toUpperCase() +
-                this.props.name.slice(1)
     return (
       <div>
-        <h4> { title + ' data'}</h4>
+        <h4> { this.props.name }</h4>
+        <p> {this.props.description }</p>
         { this.renderChart() }
       </div>
     )
