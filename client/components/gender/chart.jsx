@@ -63,6 +63,13 @@ var Chart = React.createClass({
           .attr('transform', 'translate(-25,0)')
           .call(yAxisLeft)
 
+     graph.append('svg:text')
+        .attr('class', 'x label')
+        .attr('text-anchor', 'end')
+        .attr('x', (w + m[1]) / 2.0)
+        .attr('y', h + m[0] + m[2] - 50)
+        .text('Agreement Level');
+
       // Add the line by appending an svg:path element with the data line we created above
     // do this AFTER the axes above so that the line is above the tick-lines
     graph.append('svg:path')
