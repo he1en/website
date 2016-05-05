@@ -41,17 +41,18 @@ var Data = React.createClass({
   renderLineGraphs: function () {
     return this.props.lineGraphs.map(function (graphData) {
       return (
-        <Chart name={graphData.name}
-               id={graphData.id}
-               description={graphData.description}
-               />
+        <a className='linklessAnchor' name={graphData.id}>
+          <Chart name={graphData.name}
+                id={graphData.id}
+                description={graphData.description} />
+        </a>
       )
     })
   },
 
   renderLineButtons: function () {
     return this.props.lineGraphs.map(function (graphData) {
-      return (<Button>{graphData.name}</Button>)
+      return (<Button href={'#' + graphData.id}>{graphData.name}</Button>)
     })
   },
 
@@ -63,7 +64,7 @@ var Data = React.createClass({
 
   renderSideBar: function () {
     var style = {
-      position: 'absolute',
+      position: 'fixed',
       right: '100px',
       top: '250px'
     }

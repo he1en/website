@@ -24,6 +24,12 @@ body {
   font: 10px sans-serif;
 }
 
+a.linklessAnchor, a.linklessAnchor:visited, a.linklessAnchor:hover {
+  text-decoration: inherit;
+  color: inherit;
+  cursor: auto;
+}
+
 .axis {
   shape-rendering: crispEdges;
 }
