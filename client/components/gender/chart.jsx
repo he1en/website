@@ -39,6 +39,16 @@ var Chart = React.createClass({
         return y(d.cdf)
       })
 
+    // create a area function to fill area under line
+    var areaFn = d3.svg.area()
+      .x(function (d) {
+        return x(d.val)
+      })
+      .y0(h)
+      .y1(function (d) {
+        return y(d.cdf)
+      })
+
     // Add an SVG element with the desired dimensions and margin.
     var svg = d3.select(ReactFauxDOM.createElement('svg'))
       .attr('width', w + m[1] + m[3])
@@ -82,6 +92,25 @@ var Chart = React.createClass({
         .attr('stroke', 'crimson')
         .attr('stroke-width', 2)
         .attr('fill', 'none')
+
+    var both_data = this.state.maleData.map(function (d) {
+      for (var i = 0; i < this.state.femaleData.length; i++) {
+        f_d = this.state.femaleData[i]
+        if (d.val == f_d.val) {
+          var new_d = {}
+          new_d.val = d.val
+          new_d.cdf = d.cdf < f_d.cdf ? d.cdf : f_d.cdf
+          return new_d
+        }
+      }
+    }.bind(this))
+
+    graph.append('svg:path')
+        .datum(both_data)
+        .attr('class', 'area')
+        .attr('d', areaFn)
+        .style('fill', 'mediumpurple')
+        .style('opacity', '0.4')
 
     return svg.node().toReact()
   },
