@@ -5,13 +5,12 @@ var NavItem = require('react-bootstrap').NavItem
 
 var Data = require('./data.js')
 var Cases = require('./cases.js')
-var Case = require('./case.js')
+var ViewCase = require('./view-case.js')
 
 var Frame = React.createClass({
 
   propTypes: {
-    route: React.PropTypes.object,
-    params: React.PropTypes.object
+    route: React.PropTypes.object
   },
 
   getInitialState: function () {
@@ -45,7 +44,7 @@ var Frame = React.createClass({
       return (<h4>About us.</h4>)
     }
     if (this.state.tab === 4) {
-      return (<Case id={this.props.params.caseName}/>)
+      return (<ViewCase />)
     }
   },
 

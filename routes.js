@@ -16,7 +16,7 @@ var routes = (
     <Route path='/gender/cases' component={Gender} tab={1} />
     <Route path='/gender/video' component={Gender} tab={2} />
     <Route path='/gender/about' component={Gender} tab={3} />
-    <Route path='/gender/cases/:caseName' component={Gender} tab={4} />
+    <Route path='/gender/viewcases' component={Gender} tab={4} />
   </Route>
 )
 

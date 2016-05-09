@@ -13,7 +13,7 @@ var Cases = React.createClass({
     return CaseInfo.map(function (caseDict, index) {
       return (
         <Col xs={ 6 } md={ 3 } key={ index }>
-          <a href={ '/gender/cases/' + caseDict.id } >
+          <a href={ '/gender/viewcases#' + caseDict.id } >
           <Thumbnail className='main-link'
            alt={ caseDict.name }
             src={ '/img/cases/' + caseDict.id + '.png'}>
