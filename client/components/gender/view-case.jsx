@@ -9,6 +9,12 @@ var Cases = require('../../../public/resources/cases.js')
 
 var ViewCase = React.createClass({
 
+  renderLinks: function (links) {
+    return links.map(function (link) {
+      return (<div>{ link }</div>)
+    })
+  },
+
   renderCase: function (caseInfo) {
     var imgStyle = {
       width: '250px',
@@ -31,6 +37,7 @@ var ViewCase = React.createClass({
               </Col>
               <Col xs={6} md={8}>
                 <p>{caseInfo.description}</p>
+                <p>{this.renderLinks(caseInfo.links)}</p>
               </Col>
             </Row>
           </Grid>
