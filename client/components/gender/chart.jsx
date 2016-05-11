@@ -83,15 +83,16 @@ var Chart = React.createClass({
       // Add the line by appending an svg:path element with the data line we created above
     // do this AFTER the axes above so that the line is above the tick-lines
     graph.append('svg:path')
-      .attr('d', lineFn(this.state.maleData))
-      .attr('stroke', 'steelblue')
-      .attr('stroke-width', 2)
-      .attr('fill', 'none')
+      .datum(this.state.maleData)
+      .attr('class', 'area')
+      .attr('d', areaFn)
+      .attr('fill', 'royalblue')
+
     graph.append('svg:path')
-        .attr('d', lineFn(this.state.femaleData))
-        .attr('stroke', 'crimson')
-        .attr('stroke-width', 2)
-        .attr('fill', 'none')
+      .datum(this.state.femaleData)
+      .attr('class', 'area')
+      .attr('d', areaFn)
+      .attr('fill', 'maroon')
 
     var both_data = this.state.maleData.map(function (d) {
       for (var i = 0; i < this.state.femaleData.length; i++) {
@@ -105,12 +106,12 @@ var Chart = React.createClass({
       }
     }.bind(this))
 
-    graph.append('svg:path')
+   graph.append('svg:path')
         .datum(both_data)
         .attr('class', 'area')
         .attr('d', areaFn)
-        .style('fill', 'mediumpurple')
-        .style('opacity', '0.4')
+        .style('fill', 'midnightblue')
+//        .style('opacity', '0.4')
 
     return svg.node().toReact()
   },

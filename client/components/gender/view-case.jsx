@@ -11,7 +11,7 @@ var ViewCase = React.createClass({
 
   renderCase: function (caseInfo) {
     var style = {
-      width: '100px',
+      width: '250px',
       height: '250px'
     }
     return (
@@ -36,7 +36,7 @@ var ViewCase = React.createClass({
   renderAllCases: function () {
     return Cases.map(function (caseInfo) {
       return this.renderCase(caseInfo)
-    })
+    }.bind(this))
   },
 
   render: function () {
