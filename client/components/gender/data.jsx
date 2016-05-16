@@ -5,6 +5,8 @@ var ButtonGroup = require('react-bootstrap').ButtonGroup
 
 var Chart = require('./chart.js')
 
+var Graphs = require('../../../public/resources/gender-data.js')
+
 var Data = React.createClass({
 
   propTypes: {
@@ -12,52 +14,30 @@ var Data = React.createClass({
     barCharts: React.PropTypes.array
   },
 
-  getDefaultProps: function () {
-    return {
-      lineGraphs: [
-        {
-          id: 'function',
-          name: 'Functionality',
-          description: 'Extent of agreement that function is more important than design.'
-        },
-        {
-          id: 'design',
-          name: 'Design',
-          description: 'Extent of agreement that focus is on design when choosing new products.'
-        }
-      ],
-      barCharts: [
-        'Entertainment',
-        'News',
-        'Chat and Messaging',
-        'Smart Phones',
-        'TVs',
-        'Stationary Computers',
-        'Tablets'
-      ]
-    }
-  },
-
   renderLineGraphs: function () {
-    return this.props.lineGraphs.map(function (graphData) {
+    return Graphs.lineGraphs.map(function (graphData) {
       return (
         <a className='linklessAnchor' name={graphData.id}>
           <Chart name={graphData.name}
                 id={graphData.id}
-                description={graphData.description} />
+                description={graphData.description}
+                femaleData={graphData.femaleData}
+                maleData={graphData.maleData}
+                helperText={graphData.helperText}
+            />
         </a>
       )
     })
   },
 
   renderLineButtons: function () {
-    return this.props.lineGraphs.map(function (graphData) {
+    return Graphs.lineGraphs.map(function (graphData) {
       return (<Button href={'#' + graphData.id}>{graphData.name}</Button>)
     })
   },
 
   renderBarButtons: function () {
-    return this.props.barCharts.map(function (graphData) {
+    return Graphs.barCharts.map(function (graphData) {
       return (<Button>{graphData}</Button>)
     })
   },
@@ -80,12 +60,9 @@ var Data = React.createClass({
   },
 
   render: function () {
-    var style = {
-      'padding-bottom': '40px'
-    }
     return (
       <div>
-        <h4 style={style}>Visualizing the research, disaggregated by trait.</h4>
+        <h4>Visualizing the research, disaggregated by trait.</h4>
         {this.renderLineGraphs()}
         {this.renderSideBar()}
       </div>
