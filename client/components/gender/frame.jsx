@@ -52,8 +52,8 @@ var Frame = React.createClass({
     var activeKey = this.state.tab === 4 ? 1 : this.state.tab
     return (
       <div>
-        <h1>Gender Preferences</h1>
-        <h4 className='title-description'>Research-backed visualizations of what market share you're missing.</h4>
+        <h1>Gendered Innovations in Design</h1>
+        <h4 className='title-description'>How do gender preferences impact market share?</h4>
         <Nav bsStyle='tabs' activeKey={activeKey}>
           { this.renderTabs() }
         </Nav>

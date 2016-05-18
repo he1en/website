@@ -2,8 +2,7 @@ module.exports = {
   lineGraphs: [
     {
       id: 'function',
-      name: 'Functionality',
-      description: 'Extent of agreement that function is more important than design.',
+      name: 'Values Function over Design',
       femaleData: [
         {
           'val': 1,
@@ -92,8 +91,7 @@ module.exports = {
     },
     {
       id: 'design',
-      name: 'Design',
-      description: 'Extent of agreement that focus is on design when choosing new products.',
+      name: 'Values Design over Function',
       femaleData: [
         {
           'val': 1,

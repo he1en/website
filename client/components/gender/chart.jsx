@@ -17,7 +17,6 @@ var Chart = React.createClass({
     maleData: React.PropTypes.array.isRequired,
     name: React.PropTypes.string.isRequired,
     id: React.PropTypes.string.isRequired,
-    description: React.PropTypes.string.isRequired,
     height: React.PropTypes.number,
     width: React.PropTypes.number,
     margins: React.PropTypes.array,
@@ -146,7 +145,6 @@ var Chart = React.createClass({
     return (
       <div style={style}>
         <h4>{ this.props.name }</h4>
-        <p>{ this.props.description }</p>
         <Grid><Row>
           <Col xs={10} md={8}>
             { this.renderChart() }

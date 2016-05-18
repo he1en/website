@@ -62,7 +62,6 @@ var Data = React.createClass({
   render: function () {
     return (
       <div>
-        <h4>Visualizing the research, disaggregated by trait.</h4>
         {this.renderLineGraphs()}
         {this.renderSideBar()}
       </div>
