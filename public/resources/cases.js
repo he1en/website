@@ -95,5 +95,13 @@ module.exports = [
       'Handbook of Clinical Gender Medicine. Basel: Karger, 2012',
       'Klein, S. & Roberts, C. (Eds.) (2015). Sex and Gender Differences in Infection and Treatments of Infectious Diseases London: Springer.'
     ]
+  },
+  {
+    id: 'toys',
+    name: 'Toys',
+    description: 'GoldieBlox captures a new toy market. Designed to teach engineering skills to girls, GoldieBlox went from a prototype on Kickstarter in 2012 to a toy sold by more than 6,000 retailers worldwide today. GoldieBlox was named People’s Choice and Most Educational Toy at the 2014 Toy of the Year Awards. GoldieBlox pairs a construction kit with a storybook, engaging girls’ verbal skills to inspire the next generation of women engineers. GoldieBlox’s mission is to close the gender gap in science, technology, engineering, and math—and to change the way we think about toys for girls.',
+    links: [
+      'http://www.goldieblox.com/'
+    ]
   }
 ]
