@@ -1,60 +1,95 @@
 var React = require('react')
 
 var Button = require('react-bootstrap').Button
-var ButtonGroup = require('react-bootstrap').ButtonGroup
+var ButtonToolbar = require('react-bootstrap').ButtonToolbar
+var Row = require('react-bootstrap').Row
+var Col = require('react-bootstrap').Col
 
 var Chart = require('./chart.js')
+var Graph = require('./graph.js')
+var Helper = require('./helper.js')
 
-var Graphs = require('../../../public/resources/gender-data.js')
+var Categories = require('../../../public/resources/gender-data.js')
 
 var Data = React.createClass({
 
-  propTypes: {
-    lineGraphs: React.PropTypes.array,
-    barCharts: React.PropTypes.array
+  renderBarCharts: function (barCharts) {
+    return barCharts.map(function (graphData) {
+      return (
+        <Chart name={graphData.name}
+              id={graphData.id}
+              femaleData={graphData.femaleData}
+              maleData={graphData.maleData}
+          />
+      )
+    })
   },
 
-  renderLineGraphs: function () {
-    return Graphs.lineGraphs.map(function (graphData) {
-      return (
-        <a className='linklessAnchor' name={graphData.id}>
-          <Chart name={graphData.name}
+  renderCategory: function (category) {
+    if (category.lineGraphs) {
+      return category.lineGraphs.map(function (graphData) {
+        return (
+          <Graph name={graphData.name}
                 id={graphData.id}
                 description={graphData.description}
                 femaleData={graphData.femaleData}
                 maleData={graphData.maleData}
                 helperText={graphData.helperText}
             />
+        )
+      })
+    }
+    if (category.barCharts) {
+      var style = {paddingBottom: '40px'}
+      return (
+        <div style={style}>
+          <Row>
+            <Col xs={ 3 } md={ 3 } >
+              <h4>{ category.question }</h4>
+            </Col>
+            <Col xs={ 2 } md={ 2 } >
+              <Helper title={'About this Graph'}
+                      contents={category.helperText} />
+            </Col>
+          </Row>
+          { this.renderBarCharts(category.barCharts) }
+        </div>
+      )
+    }
+  },
+
+  renderCategories: function () {
+    var style = {
+      paddingBottom: '15px'
+    }
+
+    return Categories.map(function (category) {
+      return (
+        <a className='linklessAnchor' name={category.id}>
+          <h3 style={style}>{ category.title }</h3>
+          { this.renderCategory(category) }
         </a>
       )
+    }.bind(this))
+  },
+
+  renderButtons: function () {
+    return Categories.map(function (category) {
+      return (<Button href={'#' + category.id}>{category.title}</Button>)
     })
   },
 
-  renderLineButtons: function () {
-    return Graphs.lineGraphs.map(function (graphData) {
-      return (<Button href={'#' + graphData.id}>{graphData.name}</Button>)
-    })
-  },
-
-  renderBarButtons: function () {
-    return Graphs.barCharts.map(function (graphData) {
-      return (<Button>{graphData}</Button>)
-    })
-  },
-
-  renderSideBar: function () {
+  renderNavBar: function () {
     var style = {
-      position: 'fixed',
-      right: '100px',
-      top: '250px'
+      paddingTop: '40px',
+      paddingBottom: '30px'
     }
 
     return (
       <div>
-        <ButtonGroup vertical style={style}>
-          { this.renderLineButtons() }
-          { this.renderBarButtons() }
-        </ButtonGroup>
+        <ButtonToolbar style={style}>
+          { this.renderButtons() }
+        </ButtonToolbar>
       </div>
     )
   },
@@ -62,8 +97,8 @@ var Data = React.createClass({
   render: function () {
     return (
       <div>
-        {this.renderLineGraphs()}
-        {this.renderSideBar()}
+        {this.renderNavBar()}
+        {this.renderCategories()}
       </div>
     )
   }
