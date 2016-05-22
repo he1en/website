@@ -216,29 +216,29 @@ module.exports = [
     helperText: 'asdf',
     barCharts: [
       {
-        id: 'entertainment',
-        name: 'Entertainment',
-        femaleData: 79,
-        maleData: 85
+        id: 'phones',
+        name: 'Smart Phones',
+        femaleData: 81,
+        maleData: 77
       },
       {
-        id: 'news',
-        name: 'News',
-        femaleData: 70,
-        maleData: 79
+        id: 'player',
+        name: 'Dvd-, Hd, blue ray player',
+        femaleData: 52,
+        maleData: 59
       },
       {
-        id: 'chat',
-        name: 'Chat and Messaging',
-        femaleData: 73,
-        maleData: 68
+        id: 'computer',
+        name: 'Stationary Computer',
+        femaleData: 45,
+        maleData: 61
+      },
+      {
+        id: 'tablet',
+        name: 'Tablet',
+        femaleData: 48,
+        maleData: 46
       }
-    ],
-    bla: [
-      'Smart Phones',
-      'TVs',
-      'Stationary Computers',
-      'Tablets'
     ]
   }
 

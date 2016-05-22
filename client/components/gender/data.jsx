@@ -40,10 +40,9 @@ var Data = React.createClass({
       })
     }
     if (category.barCharts) {
-      var style = {paddingBottom: '40px'}
       return (
-        <div style={style}>
-          <Row>
+        <div style={{paddingBottom: '60px'}}>
+          <Row style={{paddingBottom: '20px'}}>
             <Col xs={ 3 } md={ 3 } >
               <h4>{ category.question }</h4>
             </Col>

@@ -15,7 +15,7 @@ var Chart = React.createClass({
   },
 
   getDefaultProps: function () {
-    var margins = [10, 0, 10, 0]
+    var margins = [0, 0, 20, 0]
     return {
       margins: margins,
       width: 800,
@@ -39,25 +39,33 @@ var Chart = React.createClass({
       height: height + 'px'
     }
     var barStyle = {
-      height: (height - margins[0] - margins[1]) / 2 + 'px',
-      borderRadius: '0px 5px 5px 0px'
+      height: (height - margins[0] - margins[2]) / 2 + 'px',
+      borderRadius: '0px 5px 5px 0px',
+      fontWeight: '700',
+      color: 'black'
     }
     var femaleBarStyle = {
       backgroundColor: this.props.femaleColor,
       width: this.props.femaleData + '%',
       height: barStyle.height,
-      borderRadius: barStyle.borderRadius
+      lineHeight: barStyle.height,
+      borderRadius: barStyle.borderRadius,
+      fontWeight: barStyle.fontWeight,
+      color: barStyle.color
     }
     var maleBarStyle = {
       backgroundColor: this.props.maleColor,
       width: this.props.maleData + '%',
       height: barStyle.height,
-      borderRadius: barStyle.borderRadius
+      lineHeight: barStyle.height,
+      borderRadius: barStyle.borderRadius,
+      fontWeight: barStyle.fontWeight,
+      color: barStyle.color
     }
 
     return (
       <div>
-        <div>{ this.props.name }</div>
+        <h4>{ this.props.name }</h4>
         <div style={graphStyle}>
           <div style={femaleBarStyle}>
             { 'Women: ' + this.props.femaleData + '%'}
