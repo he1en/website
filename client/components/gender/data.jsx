@@ -32,8 +32,7 @@ var Data = React.createClass({
           <Graph name={graphData.name}
                 id={graphData.id}
                 description={graphData.description}
-                femaleData={graphData.femaleData}
-                maleData={graphData.maleData}
+                data={graphData.data}
                 helperText={graphData.helperText}
             />
         )
@@ -64,12 +63,14 @@ var Data = React.createClass({
 
     return Categories.map(function (category) {
       return (
-        <a className='linklessAnchor' name={category.id}>
-          <h3 style={style}>
-            { category.longTitle ? category.longTitle : category.title }
-          </h3>
+        <div>
+          <a className='linklessAnchor' name={category.id}>
+            <h3 style={style}>
+              { category.longTitle ? category.longTitle : category.title }
+            </h3>
+          </a>
           { this.renderCategory(category) }
-        </a>
+        </div>
       )
     }.bind(this))
   },

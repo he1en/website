@@ -4,20 +4,22 @@ var ReactFauxDOM = require('react-faux-dom')
 
 var Row = require('react-bootstrap').Row
 var Col = require('react-bootstrap').Col
+var DropdownButton = require('react-bootstrap').DropdownButton
+var MenuItem = require('react-bootstrap').MenuItem
 
 var Helper = require('./helper.js')
 
 var Graph = React.createClass({
 
   propTypes: {
-    femaleData: React.PropTypes.array.isRequired,
-    maleData: React.PropTypes.array.isRequired,
+    data: React.PropTypes.array.isRequired,
     name: React.PropTypes.string.isRequired,
     id: React.PropTypes.string.isRequired,
     height: React.PropTypes.number,
     width: React.PropTypes.number,
     margins: React.PropTypes.array,
     helperText: React.PropTypes.string.isRequired,
+    selectText: React.PropTypes.string,
     femaleColor: React.PropTypes.string,
     maleColor: React.PropTypes.string,
     bothColor: React.PropTypes.string
@@ -35,14 +37,24 @@ var Graph = React.createClass({
     }
   },
 
+  getInitialState: function () {
+    return {
+      chosenGraph: 0
+    }
+  },
+
   renderGraph: function () {
+    var data = this.props.data[this.state.chosenGraph]
+    var femaleData = data.femaleData
+    var maleData = data.maleData
+
     var width = this.props.width
     var height = this.props.height
     var margins = this.props.margins
 
     // X scale will fit all values from data[] within pixels 0-w
     var x = d3.scale.linear().domain([1, 10]).range([0, width])
-    var y = d3.scale.linear().domain([0, 0.2]).range([height, 0])
+    var y = d3.scale.linear().domain([0, 0.25]).range([height, 0])
 
     // create a area function to fill area under cdf data
     var areaFn = d3.svg.area()
@@ -88,20 +100,20 @@ var Graph = React.createClass({
     // Add the line by appending an svg:path element with the data line we created above
     // do this AFTER the axes above so that the line is above the tick-lines
     graph.append('svg:path')
-      .datum(this.props.maleData)
+      .datum(maleData)
       .attr('class', 'area')
       .attr('d', areaFn)
       .attr('fill', this.props.maleColor)
 
     graph.append('svg:path')
-      .datum(this.props.femaleData)
+      .datum(femaleData)
       .attr('class', 'area')
       .attr('d', areaFn)
       .attr('fill', this.props.femaleColor)
 
-    var both_data = this.props.maleData.map(function (d) {
-      for (var i = 0; i < this.props.femaleData.length; i++) {
-        var f_d = this.props.femaleData[i]
+    var both_data = maleData.map(function (d) {
+      for (var i = 0; i < femaleData.length; i++) {
+        var f_d = femaleData[i]
         if (d.val === f_d.val) {
           var new_d = {}
           new_d.val = d.val
@@ -109,7 +121,7 @@ var Graph = React.createClass({
           return new_d
         }
       }
-    }.bind(this))
+    })
 
     graph.append('svg:path')
         .datum(both_data)
@@ -118,6 +130,28 @@ var Graph = React.createClass({
         .style('fill', this.props.bothColor)
 
     return svg.node().toReact()
+  },
+
+  onSelectAlert: function (eventKey) {
+    this.setState({chosenGraph: eventKey})
+  },
+
+  renderDropdown: function () {
+    if (this.props.data.length === 1) return null
+    var title = this.props.data[this.state.chosenGraph].title
+    return (
+      <div>
+        <DropdownButton title={title} id={title}>
+          { this.props.data.map(function (data, i) {
+              return (
+                <MenuItem eventKey={i} onSelect={this.onSelectAlert}>
+                 { data.title }
+                </MenuItem>)
+            }.bind(this))
+          }
+        </DropdownButton>
+      </div>
+    )
   },
 
   render: function () {
@@ -134,6 +168,7 @@ var Graph = React.createClass({
             <Helper title={'About this Graph'} contents={this.props.helperText} />
           </Col>
         </Row>
+        { this.renderDropdown() }
         { this.renderGraph() }
       </div>
     )
