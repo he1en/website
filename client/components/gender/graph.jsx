@@ -129,6 +129,25 @@ var Graph = React.createClass({
         .attr('d', areaFn)
         .style('fill', this.props.bothColor)
 
+    // Add key labels
+    graph.append('svg:text')
+        .attr('class', 'key')
+        .attr('text-anchor', 'end')
+        .attr('x', (width + margins[1]) / 5.0)
+        .attr('y', (height + margins[0] + margins[2]) / 4.0)
+        .attr('fill', this.props.femaleColor)
+        .attr('font-weight', 'bold')
+        .text('Women')
+
+    graph.append('svg:text')
+        .attr('class', 'key')
+        .attr('text-anchor', 'end')
+        .attr('x', (width + margins[1]) * 4.0 / 5.0)
+        .attr('y', (height + margins[0] + margins[2]) / 4.0)
+        .attr('fill', this.props.maleColor)
+        .attr('font-weight', 'bold')
+        .text('Men')
+
     return svg.node().toReact()
   },
 
