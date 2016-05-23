@@ -15,6 +15,28 @@ var ViewCase = React.createClass({
     })
   },
 
+  renderContents: function (caseInfo) {
+    return caseInfo.sections.map(function (section) {
+      return (
+        <p>
+          {
+            section.map(function (sectionPiece) {
+              if (sectionPiece[1]) {
+                return (
+                  <a href={sectionPiece[1]}>
+                    {sectionPiece[0]}
+                  </a>
+                )
+              } else {
+                return (<span>{sectionPiece[0]}</span>)
+              }
+            })
+          }
+        </p>
+      )
+    })
+  },
+
   renderCase: function (caseInfo) {
     var imgStyle = {
       width: '250px',
@@ -37,8 +59,9 @@ var ViewCase = React.createClass({
                      rounded />
             </Col>
             <Col xs={6} md={8}>
-              <p>{caseInfo.description}</p>
-              <p>{this.renderLinks(caseInfo.links)}</p>
+              <p>
+                { this.renderContents(caseInfo) }
+              </p>
             </Col>
           </Row>
         </Grid>
