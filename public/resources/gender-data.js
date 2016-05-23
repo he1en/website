@@ -186,6 +186,7 @@ module.exports = [
   {
     id: 'usage',
     title: 'Usage',
+    longTitle: 'Usage Preferences for Technology',
     question: 'Which of the following online services do you use privately?',
     helperText: 'asdf',
     barCharts: [
@@ -212,6 +213,7 @@ module.exports = [
   {
     id: 'devices',
     title: 'Devices',
+    longTitle: 'Preferred Devices',
     question: 'Which of the following products do you use privately?',
     helperText: 'asdf',
     barCharts: [

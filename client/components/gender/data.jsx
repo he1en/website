@@ -65,7 +65,9 @@ var Data = React.createClass({
     return Categories.map(function (category) {
       return (
         <a className='linklessAnchor' name={category.id}>
-          <h3 style={style}>{ category.title }</h3>
+          <h3 style={style}>
+            { category.longTitle ? category.longTitle : category.title }
+          </h3>
           { this.renderCategory(category) }
         </a>
       )
