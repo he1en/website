@@ -11,7 +11,7 @@ var ViewCase = React.createClass({
 
   renderLinks: function (links) {
     return links.map(function (link) {
-      return (<div>{ link }</div>)
+      return (<a>{ link }</a>)
     })
   },
 
@@ -25,24 +25,24 @@ var ViewCase = React.createClass({
       'paddingBottom': '30px'
     }
     return (
-      <a className='linklessAnchor' name={caseInfo.id}>
-        <div style={style}>
+      <div style={style}>
+        <a className='linklessAnchor' name={caseInfo.id}>
           <h4>{caseInfo.name}</h4>
-          <Grid>
-            <Row>
-              <Col xs={ 6 } md={ 4 }>
-                <Image style={imgStyle}
-                       src={'/img/cases/' + caseInfo.id + '.png'}
-                       rounded />
-              </Col>
-              <Col xs={6} md={8}>
-                <p>{caseInfo.description}</p>
-                <p>{this.renderLinks(caseInfo.links)}</p>
-              </Col>
-            </Row>
-          </Grid>
-        </div>
-      </a>
+        </a>
+        <Grid>
+          <Row>
+            <Col xs={ 6 } md={ 4 }>
+              <Image style={imgStyle}
+                     src={'/img/cases/' + caseInfo.id + '.png'}
+                     rounded />
+            </Col>
+            <Col xs={6} md={8}>
+              <p>{caseInfo.description}</p>
+              <p>{this.renderLinks(caseInfo.links)}</p>
+            </Col>
+          </Row>
+        </Grid>
+      </div>
     )
   },
 
