@@ -43,6 +43,14 @@ var Graph = React.createClass({
     }
   },
 
+  dataAverage: function (data) {
+    var sum = 0
+    for (var i = 0; i < data.length; i++) {
+      sum += data[i].val * data[i].pdf
+    }
+    return sum * 1.0 / data.length
+  },
+
   renderGraph: function () {
     var data = this.props.data[this.state.chosenGraph]
     var femaleData = data.femaleData
@@ -56,14 +64,14 @@ var Graph = React.createClass({
     var x = d3.scale.linear().domain([1, 10]).range([0, width])
     var y = d3.scale.linear().domain([0, 0.25]).range([height, 0])
 
-    // create a area function to fill area under cdf data
+    // create a area function to fill area under pdf data
     var areaFn = d3.svg.area()
       .x(function (d) {
         return x(d.val)
       })
       .y0(height)
       .y1(function (d) {
-        return y(d.cdf)
+        return y(d.pdf)
       })
 
     // Add an SVG element with the desired dimensions and margin.
@@ -93,7 +101,7 @@ var Graph = React.createClass({
     graph.append('svg:text')
         .attr('class', 'x label')
         .attr('text-anchor', 'end')
-        .attr('x', (width + margins[1]) / 2.0)
+        .attr('x', (width + margins[1] + margins[3]) / 2.0)
         .attr('y', height + margins[0] + margins[2] - 50)
         .text('Agreement Level')
 
@@ -117,7 +125,7 @@ var Graph = React.createClass({
         if (d.val === f_d.val) {
           var new_d = {}
           new_d.val = d.val
-          new_d.cdf = d.cdf < f_d.cdf ? d.cdf : f_d.cdf
+          new_d.pdf = d.pdf < f_d.pdf ? d.pdf : f_d.pdf
           return new_d
         }
       }
@@ -130,11 +138,22 @@ var Graph = React.createClass({
         .style('fill', this.props.bothColor)
 
     // Add key labels
+    var labelHeight = (height + margins[0] + margins[2]) / 4.0
+    var leftLabelWidth = (width + margins[1] + margins[3]) / 6.0
+    var rightLabelWidth = (width + margins[1] + margins[3]) * 3.0 / 4.0
+    var femaleLabelWidth, maleLabelWidth
+    if (this.dataAverage(femaleData) < this.dataAverage(maleData)) {
+      femaleLabelWidth = leftLabelWidth
+      maleLabelWidth = rightLabelWidth
+    } else {
+      femaleLabelWidth = rightLabelWidth
+      maleLabelWidth = leftLabelWidth
+    }
     graph.append('svg:text')
         .attr('class', 'key')
         .attr('text-anchor', 'end')
-        .attr('x', (width + margins[1]) / 5.0)
-        .attr('y', (height + margins[0] + margins[2]) / 4.0)
+        .attr('x', femaleLabelWidth)
+        .attr('y', labelHeight)
         .attr('fill', this.props.femaleColor)
         .attr('font-weight', 'bold')
         .text('Women')
@@ -142,8 +161,8 @@ var Graph = React.createClass({
     graph.append('svg:text')
         .attr('class', 'key')
         .attr('text-anchor', 'end')
-        .attr('x', (width + margins[1]) * 4.0 / 5.0)
-        .attr('y', (height + margins[0] + margins[2]) / 4.0)
+        .attr('x', maleLabelWidth)
+        .attr('y', labelHeight)
         .attr('fill', this.props.maleColor)
         .attr('font-weight', 'bold')
         .text('Men')
