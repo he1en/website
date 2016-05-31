@@ -5,7 +5,7 @@ module.exports = [
     lineGraphs: [
       {
         id: 'function',
-        name: 'Values Function over Design',
+        name: 'On average, men favor function over design.',
         data: [
           {
             title: 'All Data',
@@ -447,7 +447,7 @@ module.exports = [
       },
       {
         id: 'design',
-        name: 'Values Design over Function',
+        name: 'On average, women favor design over function.',
         data: [
           {
             title: 'All Data',
@@ -907,23 +907,23 @@ module.exports = [
           },
           {
             title: 'Ages 18-25',
-            femaleData: 79,
-            maleData: 85
+            femaleData: 92,
+            maleData: 97
           },
           {
             title: 'Ages 26-39',
-            femaleData: 79,
-            maleData: 85
+            femaleData: 84,
+            maleData: 91
           },
           {
             title: 'Ages 40-54',
             femaleData: 79,
-            maleData: 85
+            maleData: 89
           },
           {
             title: 'Ages 55-70',
-            femaleData: 79,
-            maleData: 85
+            femaleData: 61,
+            maleData: 72
           }
         ]
       },
@@ -938,23 +938,23 @@ module.exports = [
           },
           {
             title: 'Ages 18-25',
-            femaleData: 79,
-            maleData: 85
+            femaleData: 63,
+            maleData: 76
           },
           {
             title: 'Ages 26-39',
-            femaleData: 79,
-            maleData: 85
+            femaleData: 69,
+            maleData: 81
           },
           {
             title: 'Ages 40-54',
-            femaleData: 79,
-            maleData: 85
+            femaleData: 73,
+            maleData: 84
           },
           {
             title: 'Ages 55-70',
-            femaleData: 79,
-            maleData: 85
+            femaleData: 76,
+            maleData: 72
           }
         ]
       },
@@ -969,23 +969,23 @@ module.exports = [
           },
           {
             title: 'Ages 18-25',
-            femaleData: 79,
-            maleData: 85
+            femaleData: 91,
+            maleData: 88
           },
           {
             title: 'Ages 26-39',
-            femaleData: 79,
-            maleData: 85
+            femaleData: 75,
+            maleData: 81
           },
           {
             title: 'Ages 40-54',
-            femaleData: 79,
-            maleData: 85
+            femaleData: 72,
+            maleData: 63
           },
           {
             title: 'Ages 55-70',
-            femaleData: 79,
-            maleData: 85
+            femaleData: 53,
+            maleData: 55
           }
         ]
       }
