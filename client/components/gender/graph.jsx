@@ -118,23 +118,38 @@ var Graph = React.createClass({
       .attr('d', areaFn)
       .attr('fill', this.props.femaleColor)
 
-    var both_data = maleData.map(function (d) {
-      for (var i = 0; i < femaleData.length; i++) {
-        var f_d = femaleData[i]
-        if (d.val === f_d.val) {
-          var new_d = {}
-          new_d.val = d.val
-          new_d.pdf = d.pdf < f_d.pdf ? d.pdf : f_d.pdf
-          return new_d
-        }
-      }
-    })
+    var defs = graph.append('defs')
+
+    defs.append('clipPath')
+      .attr('id', this.props.id + '-clip-female')
+      .append('path')
+      .datum(femaleData)
+      .attr('d', areaFn)
+
+    defs.append('clipPath')
+      .attr('id', this.props.id + '-clip-male')
+      .append('path')
+      .datum(maleData)
+      .attr('clip-path', 'url(#' + this.props.id + '-clip-female)')
+      .attr('d', areaFn)
+
+    var both_data = []
+    var num_points = femaleData.length
+    for (var i = 0; i < num_points; i++) {
+      var new_d = {}
+      var f_d = femaleData[i]
+      var m_d = maleData[i]
+      new_d.val = f_d.val
+      new_d.pdf = m_d.pdf > f_d.pdf ? m_d.pdf : f_d.pdf
+      both_data.push(new_d)
+    }
 
     graph.append('svg:path')
-        .datum(both_data)
-        .attr('class', 'area')
-        .attr('d', areaFn)
-        .style('fill', this.props.bothColor)
+      .datum(both_data)
+      .attr('class', 'area')
+      .attr('d', areaFn)
+      .attr('clip-path', 'url(#' + this.props.id + '-clip-male)')
+      .style('fill', this.props.bothColor)
 
     // Add key labels
     var labelHeight = (height + margins[0] + margins[2]) / 4.0
