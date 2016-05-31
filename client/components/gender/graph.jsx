@@ -81,28 +81,41 @@ var Graph = React.createClass({
     var graph = svg.append('svg:g')
       .attr('transform', 'translate(' + margins[3] + ',' + margins[0] + ')')
 
-    // create yAxis
+    // create x Axis
     var xAxis = d3.svg.axis().scale(x).tickSize(height * -1).tickSubdivide(true)
-    // Add the x-axis.
     graph.append('svg:g')
-          .attr('class', 'x axis')
-          .attr('transform', 'translate(0,' + height + ')')
-          .call(xAxis)
+      .attr('class', 'x axis')
+      .attr('transform', 'translate(0,' + height + ')')
+      .call(xAxis)
+
+    graph.append('svg:text')
+      .attr('text-anchor', 'end')
+      .attr('class', 'x label')
+      .attr('x', margins[1])
+      .attr('y', height + margins[0] + margins[2] - 50)
+      .text('High Disagreement')
+    graph.append('svg:text')
+      .attr('text-anchor', 'end')
+      .attr('class', 'x label')
+      .attr('x', width)
+      .attr('y', height + margins[0] + margins[2] - 50)
+      .text('High Agreement')
 
     // create left yAxis
     var yAxisLeft = d3.svg.axis().scale(y).ticks(4).orient('left')
-    // Add the y-axis to the left
+
     graph.append('svg:g')
-          .attr('class', 'y axis')
-          .attr('transform', 'translate(-25,0)')
-          .call(yAxisLeft)
+      .attr('class', 'y axis')
+      .attr('transform', 'translate(-25,0)')
+      .call(yAxisLeft)
 
     graph.append('svg:text')
-        .attr('class', 'x label')
-        .attr('text-anchor', 'end')
-        .attr('x', (width + margins[1] + margins[3]) / 2.0)
-        .attr('y', height + margins[0] + margins[2] - 50)
-        .text('Agreement Level')
+      .attr('class', 'y label')
+      .attr('transform', 'rotate(-90)')
+      .attr('text-anchor', 'end')
+      .attr('x', 0 - margins[1])
+      .attr('y', 0 - margins[0])
+      .text('Percentage of Respondents')
 
     // Add the line by appending an svg:path element with the data line we created above
     // do this AFTER the axes above so that the line is above the tick-lines
