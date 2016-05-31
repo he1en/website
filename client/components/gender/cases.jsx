@@ -1,6 +1,5 @@
 var React = require('react')
 
-var Grid = require('react-bootstrap').Grid
 var Row = require('react-bootstrap').Row
 var Col = require('react-bootstrap').Col
 var Thumbnail = require('react-bootstrap').Thumbnail
@@ -28,12 +27,12 @@ var Cases = React.createClass({
   render: function () {
     return (
       <div>
-        <h4>Case studies of failure when gender is not taken into account.</h4>
-        <Grid>
-          <Row>
-            { this.renderCases() }
-          </Row>
-        </Grid>
+        <h4 style={{paddingTop: '20px', paddingBottom: '20px'}}>
+          Case Studies: Improving products through gender analysis.
+        </h4>
+        <Row style={{paddingRight: '200px'}}>
+          { this.renderCases() }
+        </Row>
       </div>
 
     )
