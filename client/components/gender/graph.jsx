@@ -4,10 +4,9 @@ var ReactFauxDOM = require('react-faux-dom')
 
 var Row = require('react-bootstrap').Row
 var Col = require('react-bootstrap').Col
-var DropdownButton = require('react-bootstrap').DropdownButton
-var MenuItem = require('react-bootstrap').MenuItem
 
 var Helper = require('./helper.js')
+var Dropdown = require('./dropdown.js')
 
 var Graph = React.createClass({
 
@@ -170,32 +169,19 @@ var Graph = React.createClass({
     return svg.node().toReact()
   },
 
-  onSelectAlert: function (eventKey) {
+  onSelect: function (eventKey) {
     this.setState({chosenGraph: eventKey})
-  },
-
-  renderDropdown: function () {
-    if (this.props.data.length === 1) return null
-    var title = this.props.data[this.state.chosenGraph].title
-    return (
-      <div>
-        <DropdownButton title={title} id={title}>
-          { this.props.data.map(function (data, i) {
-              return (
-                <MenuItem eventKey={i} onSelect={this.onSelectAlert}>
-                 { data.title }
-                </MenuItem>)
-            }.bind(this))
-          }
-        </DropdownButton>
-      </div>
-    )
   },
 
   render: function () {
     var style = {
       paddingBottom: '30px'
     }
+    var dropdownStyle = {
+      paddingBottom: '20px',
+      left: this.props.width - this.props.margins[3] + 'px'
+    }
+    var dropdownTitle = this.props.data[this.state.chosenGraph].title
     return (
       <div>
         <Row style={style}>
@@ -206,7 +192,12 @@ var Graph = React.createClass({
             <Helper title={'About this Graph'} contents={this.props.helperText} />
           </Col>
         </Row>
-        { this.renderDropdown() }
+        <Dropdown
+          style={dropdownStyle}
+          title={dropdownTitle}
+          names={this.props.data.map(function (data) { return data.title })}
+          onSelectFn={this.onSelect}
+        />
         { this.renderGraph() }
       </div>
     )

@@ -893,26 +893,101 @@ module.exports = [
     id: 'usage',
     title: 'Usage',
     longTitle: 'Usage Preferences for Technology',
-    question: 'Which of the following online services do you use privately?',
+    explanation: 'Which of the following online services do you use privately?',
     helperText: 'asdf',
     barCharts: [
       {
         id: 'entertainment',
         name: 'Entertainment',
-        femaleData: 79,
-        maleData: 85
+        data: [
+          {
+            title: 'All Data',
+            femaleData: 79,
+            maleData: 85
+          },
+          {
+            title: 'Ages 18-25',
+            femaleData: 79,
+            maleData: 85
+          },
+          {
+            title: 'Ages 26-39',
+            femaleData: 79,
+            maleData: 85
+          },
+          {
+            title: 'Ages 40-54',
+            femaleData: 79,
+            maleData: 85
+          },
+          {
+            title: 'Ages 55-70',
+            femaleData: 79,
+            maleData: 85
+          }
+        ]
       },
       {
         id: 'news',
         name: 'News',
-        femaleData: 70,
-        maleData: 79
+        data: [
+          {
+            title: 'All Data',
+            femaleData: 70,
+            maleData: 79
+          },
+          {
+            title: 'Ages 18-25',
+            femaleData: 79,
+            maleData: 85
+          },
+          {
+            title: 'Ages 26-39',
+            femaleData: 79,
+            maleData: 85
+          },
+          {
+            title: 'Ages 40-54',
+            femaleData: 79,
+            maleData: 85
+          },
+          {
+            title: 'Ages 55-70',
+            femaleData: 79,
+            maleData: 85
+          }
+        ]
       },
       {
         id: 'chat',
         name: 'Chat and Messaging',
-        femaleData: 73,
-        maleData: 68
+        data: [
+          {
+            title: 'All Data',
+            femaleData: 73,
+            maleData: 68
+          },
+          {
+            title: 'Ages 18-25',
+            femaleData: 79,
+            maleData: 85
+          },
+          {
+            title: 'Ages 26-39',
+            femaleData: 79,
+            maleData: 85
+          },
+          {
+            title: 'Ages 40-54',
+            femaleData: 79,
+            maleData: 85
+          },
+          {
+            title: 'Ages 55-70',
+            femaleData: 79,
+            maleData: 85
+          }
+        ]
       }
     ]
   },
@@ -920,32 +995,52 @@ module.exports = [
     id: 'devices',
     title: 'Devices',
     longTitle: 'Preferred Devices',
-    question: 'Which of the following products do you use privately?',
+    explanation: 'Which of the following products do you use privately?',
     helperText: 'asdf',
     barCharts: [
       {
         id: 'phones',
         name: 'Smart Phones',
-        femaleData: 81,
-        maleData: 77
+        data: [
+          {
+            title: 'All Data',
+            femaleData: 81,
+            maleData: 77
+          }
+        ]
       },
       {
         id: 'player',
         name: 'Dvd-, Hd, blue ray player',
-        femaleData: 52,
-        maleData: 59
+        data: [
+          {
+            title: 'All Data',
+            femaleData: 52,
+            maleData: 59
+          }
+        ]
       },
       {
         id: 'computer',
         name: 'Stationary Computer',
-        femaleData: 45,
-        maleData: 61
+        data: [
+          {
+            title: 'All Data',
+            femaleData: 45,
+            maleData: 61
+          }
+        ]
       },
       {
         id: 'tablet',
         name: 'Tablet',
-        femaleData: 48,
-        maleData: 46
+        data: [
+          {
+            title: 'All Data',
+            femaleData: 48,
+            maleData: 46
+          }
+        ]
       }
     ]
   }

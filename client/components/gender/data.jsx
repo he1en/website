@@ -18,8 +18,7 @@ var Data = React.createClass({
       return (
         <Chart name={graphData.name}
               id={graphData.id}
-              femaleData={graphData.femaleData}
-              maleData={graphData.maleData}
+              data={graphData.data}
           />
       )
     })
@@ -43,7 +42,7 @@ var Data = React.createClass({
         <div style={{paddingBottom: '60px'}}>
           <Row style={{paddingBottom: '20px'}}>
             <Col xs={ 3 } md={ 3 } >
-              <h4>{ category.question }</h4>
+              <h4>{ category.explanation }</h4>
             </Col>
             <Col xs={ 2 } md={ 2 } >
               <Helper title={'About this Graph'}

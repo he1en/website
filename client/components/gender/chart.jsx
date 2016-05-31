@@ -1,10 +1,11 @@
 var React = require('react')
 
+var Dropdown = require('./dropdown.js')
+
 var Chart = React.createClass({
 
   propTypes: {
-    femaleData: React.PropTypes.number.isRequired,
-    maleData: React.PropTypes.number.isRequired,
+    data: React.PropTypes.array.isRequired,
     name: React.PropTypes.string.isRequired,
     id: React.PropTypes.string.isRequired,
     height: React.PropTypes.number,
@@ -25,12 +26,26 @@ var Chart = React.createClass({
     }
   },
 
-  render: function () {
+  getInitialState: function () {
+    return {
+      chosenChart: 0
+    }
+  },
+
+  onSelect: function (eventKey) {
+    this.setState({chosenChart: eventKey})
+  },
+
+  renderChart: function () {
+    var data = this.props.data[this.state.chosenChart]
+    var femaleData = data.femaleData
+    var maleData = data.maleData
+
     var margins = this.props.margins
     var height = this.props.height
     var width = this.props.width
 
-    var graphStyle = {
+    var chartStyle = {
       paddingTop: margins[0] + 'px',
       paddingBottom: margins[2] + 'px',
       paddingLeft: margins[1] + 'px',
@@ -46,7 +61,7 @@ var Chart = React.createClass({
     }
     var femaleBarStyle = {
       backgroundColor: this.props.femaleColor,
-      width: this.props.femaleData + '%',
+      width: femaleData + '%',
       height: barStyle.height,
       lineHeight: barStyle.height,
       borderRadius: barStyle.borderRadius,
@@ -55,7 +70,7 @@ var Chart = React.createClass({
     }
     var maleBarStyle = {
       backgroundColor: this.props.maleColor,
-      width: this.props.maleData + '%',
+      width: maleData + '%',
       height: barStyle.height,
       lineHeight: barStyle.height,
       borderRadius: barStyle.borderRadius,
@@ -64,16 +79,33 @@ var Chart = React.createClass({
     }
 
     return (
+      <div style={chartStyle}>
+        <div style={femaleBarStyle}>
+          { 'Women: ' + femaleData + '%'}
+        </div>
+        <div style={maleBarStyle}>
+          { 'Men: ' + maleData + '%'}
+        </div>
+      </div>
+    )
+  },
+
+  render: function () {
+    var dropdownStyle = {
+      paddingBottom: '20px',
+      left: this.props.width - this.props.margins[3] + 'px'
+    }
+    var dropdownTitle = this.props.data[this.state.chosenChart].title
+    return (
       <div>
         <h4>{ this.props.name }</h4>
-        <div style={graphStyle}>
-          <div style={femaleBarStyle}>
-            { 'Women: ' + this.props.femaleData + '%'}
-          </div>
-          <div style={maleBarStyle}>
-            { 'Men: ' + this.props.maleData + '%'}
-          </div>
-        </div>
+        <Dropdown
+          style={dropdownStyle}
+          title={dropdownTitle}
+          names={this.props.data.map(function (data) { return data.title })}
+          onSelectFn={this.onSelect}
+        />
+        { this.renderChart() }
       </div>
     )
   }
