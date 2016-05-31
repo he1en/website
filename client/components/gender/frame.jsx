@@ -53,7 +53,9 @@ var Frame = React.createClass({
     return (
       <div>
         <h1>Gendered Innovations in Design</h1>
-        <h4 className='title-description'>How do gender preferences impact market share?</h4>
+        <h4 className='title-description'>
+          Accounting for gender differences can increase your market share.
+        </h4>
         <Nav bsStyle='tabs' activeKey={activeKey}>
           { this.renderTabs() }
         </Nav>

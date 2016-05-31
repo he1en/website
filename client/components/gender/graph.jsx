@@ -200,7 +200,7 @@ var Graph = React.createClass({
     return (
       <div>
         <Row style={style}>
-          <Col xs={ 3 } md={ 3 } >
+          <Col xs={ 4 } md={ 4 } >
             <h4>{ this.props.name }</h4>
           </Col>
           <Col xs={ 2 } md={ 2 } >
