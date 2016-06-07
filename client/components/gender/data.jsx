@@ -33,6 +33,8 @@ var Data = React.createClass({
                 description={graphData.description}
                 data={graphData.data}
                 helperText={graphData.helperText}
+                citation={graphData.citation}
+                graphTitle={graphData.graphTitle}
             />
         )
       })
@@ -41,7 +43,7 @@ var Data = React.createClass({
       return (
         <div style={{paddingBottom: '60px'}}>
           <Row style={{paddingBottom: '20px'}}>
-            <Col xs={ 3 } md={ 3 } >
+            <Col xs={ 5 } md={ 5 } >
               <h4>{ category.explanation }</h4>
             </Col>
             <Col xs={ 2 } md={ 2 } >
@@ -50,6 +52,7 @@ var Data = React.createClass({
             </Col>
           </Row>
           { this.renderBarCharts(category.barCharts) }
+          <div className='citation'>{ category.citation }</div>
         </div>
       )
     }

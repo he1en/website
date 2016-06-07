@@ -6,9 +6,11 @@ module.exports = [
       {
         id: 'function',
         name: 'On average, men favor function over design.',
+        graphTitle: 'Agreement that function of technology is more important than design',
+        citation: 'Design People (Denmark),  Tech-User Navigator: Segmentation with a Gender Perspective (2015)',
         data: [
           {
-            title: 'All Data',
+            title: 'All Ages',
             femaleData: [
               {
                 'val': 1,
@@ -443,14 +445,20 @@ module.exports = [
             ]
           }
         ],
-        helperText: 'The X coordinate is the respondents extent of agreement with statement: “The technology and the functions of the product that I use are more important to me than the design." \n The Y coordinate is the percentage of respondents who answered that number. \n The study included 600 women and 600 men from Scandanavia, Germany, and France.'
+        helperText: [
+          'The X coordinate is the respondents extent of agreement (on a scale of 1-10) with the statement: “The technology and the functions of the product that I use are more important to me than the design."',
+          'The Y coordinate is the percentage of respondents of the given gender who answered that number.',
+          'Data is from Design People (Denmark),  Tech-User Navigator: Segmentation with a Gender Perspective (2015). The study included 600 women and 600 men from Scandanavia, Germany, and France.'
+        ]
       },
       {
         id: 'design',
         name: 'On average, women favor design over function.',
+        graphTitle: 'Agreement that the design of technology is of utmost importance',
+        citation: 'Design People (Denmark),  Tech-User Navigator: Segmentation with a Gender Perspective (2015)',
         data: [
           {
-            title: 'All Data',
+            title: 'All Ages',
             femaleData: [
               {
                 'val': 1,
@@ -885,7 +893,11 @@ module.exports = [
             ]
           }
         ],
-        helperText: 'The X coordinate is the respondents extent of agreement with statement: “I am very focused on the product\’s design when I buy new technology products." \n The Y coordinate is the percentage of respondents who answered that number. \n The study included 600 women and 600 men from Scandanavia, Germany, and France.'
+        helperText: [
+          'The X coordinate is the respondents extent of agreement (on a scale of 1-10) with the statement: "I am very focused on the product\’s design, when I buy new technology products"',
+          'The Y coordinate is the percentage of respondents of the given gender who answered that number.',
+          'Data is from Design People (Denmark),  Tech-User Navigator: Segmentation with a Gender Perspective (2015), a study which included 600 women and 600 men from Scandanavia, Germany, and France.'
+        ]
       }
     ]
   },
@@ -894,14 +906,18 @@ module.exports = [
     title: 'Usage',
     longTitle: 'Usage Preferences for Technology',
     explanation: 'Which of the following online services do you use privately?',
-    helperText: 'asdf',
+    citation: 'Design People (Denmark),  Tech-User Navigator: Segmentation with a Gender Perspective (2015)',
+    helperText: [
+      'For each service, the bars show the percentage of respondents of each gender who stated that they use technology for that service.',
+      'Data is from Design People (Denmark),  Tech-User Navigator: Segmentation with a Gender Perspective (2015). The study included 600 women and 600 men from Scandanavia, Germany, and France.'
+    ],
     barCharts: [
       {
         id: 'entertainment',
         name: 'Entertainment',
         data: [
           {
-            title: 'All Data',
+            title: 'All Ages',
             femaleData: 79,
             maleData: 85
           },
@@ -932,7 +948,7 @@ module.exports = [
         name: 'News',
         data: [
           {
-            title: 'All Data',
+            title: 'All Ages',
             femaleData: 70,
             maleData: 79
           },
@@ -963,7 +979,7 @@ module.exports = [
         name: 'Chat and Messaging',
         data: [
           {
-            title: 'All Data',
+            title: 'All Ages',
             femaleData: 73,
             maleData: 68
           },
@@ -996,14 +1012,18 @@ module.exports = [
     title: 'Devices',
     longTitle: 'Preferred Devices',
     explanation: 'Which of the following products do you use privately?',
-    helperText: 'asdf',
+    citation: 'Design People (Denmark),  Tech-User Navigator: Segmentation with a Gender Perspective (2015)',
+    helperText: [
+      'For each product, the bars show the percentage of respondents of each gender who stated that own and use that product.',
+      'Data is from Design People (Denmark), Tech-User Navigator: Segmentation with a Gender Perspective (2015). The study included 600 women and 600 men from Scandanavia, Germany, and France.'
+    ],
     barCharts: [
       {
         id: 'phones',
         name: 'Smart Phones',
         data: [
           {
-            title: 'All Data',
+            title: 'All Ages',
             femaleData: 81,
             maleData: 77
           }
@@ -1014,7 +1034,7 @@ module.exports = [
         name: 'Dvd-, Hd, blue ray player',
         data: [
           {
-            title: 'All Data',
+            title: 'All Ages',
             femaleData: 52,
             maleData: 59
           }
@@ -1025,7 +1045,7 @@ module.exports = [
         name: 'Stationary Computer',
         data: [
           {
-            title: 'All Data',
+            title: 'All Ages',
             femaleData: 45,
             maleData: 61
           }
@@ -1036,7 +1056,7 @@ module.exports = [
         name: 'Tablet',
         data: [
           {
-            title: 'All Data',
+            title: 'All Ages',
             femaleData: 48,
             maleData: 46
           }

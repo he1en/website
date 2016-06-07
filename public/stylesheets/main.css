@@ -42,3 +42,13 @@ a.linklessAnchor, a.linklessAnchor:visited, a.linklessAnchor:hover {
   fill: none;
   stroke: #000;
 }
+
+.citation {
+  font-style: italic;
+  font-size: 10px;
+}
+
+.graphTitle {
+  font-size: 15px;
+  font-weight: 500;
+}

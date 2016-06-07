@@ -17,8 +17,10 @@ var Graph = React.createClass({
     height: React.PropTypes.number,
     width: React.PropTypes.number,
     margins: React.PropTypes.array,
-    helperText: React.PropTypes.string.isRequired,
+    helperText: React.PropTypes.array.isRequired,
     selectText: React.PropTypes.string,
+    citation: React.PropTypes.string,
+    graphTitle: React.PropTypes.string,
     femaleColor: React.PropTypes.string,
     maleColor: React.PropTypes.string,
     bothColor: React.PropTypes.string
@@ -88,6 +90,7 @@ var Graph = React.createClass({
       .attr('transform', 'translate(0,' + height + ')')
       .call(xAxis)
 
+    // add descriptive labels
     graph.append('svg:text')
       .attr('text-anchor', 'end')
       .attr('class', 'x label')
@@ -100,6 +103,24 @@ var Graph = React.createClass({
       .attr('x', width)
       .attr('y', height + margins[0] + margins[2] - 50)
       .text('High Agreement')
+
+    if (this.props.citation) {
+      graph.append('svg:text')
+        .attr('text-anchor', 'end')
+        .attr('class', 'citation')
+        .attr('x', width)
+        .attr('y', height + margins[0] + margins[2] - 30)
+        .text(this.props.citation)
+    }
+
+    if (this.props.graphTitle) {
+      graph.append('svg:text')
+        .attr('text-anchor', 'middle')
+        .attr('class', 'graphTitle')
+        .attr('x', width / 2 + 20)
+        .attr('y', 5)
+        .text(this.props.graphTitle)
+    }
 
     // create left yAxis
     var yAxisLeft = d3.svg.axis().scale(y).ticks(4).orient('left')
@@ -202,7 +223,7 @@ var Graph = React.createClass({
   },
 
   render: function () {
-    var style = {
+    var spaceStyle = {
       paddingBottom: '30px'
     }
     var dropdownStyle = {
@@ -211,9 +232,9 @@ var Graph = React.createClass({
     }
     var dropdownTitle = this.props.data[this.state.chosenGraph].title
     return (
-      <div>
-        <Row style={style}>
-          <Col xs={ 4 } md={ 4 } >
+      <div style={spaceStyle}>
+        <Row style={spaceStyle}>
+          <Col xs={ 5 } md={ 5 } >
             <h4>{ this.props.name }</h4>
           </Col>
           <Col xs={ 2 } md={ 2 } >
