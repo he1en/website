@@ -11,7 +11,7 @@ var React = require('react')
 var Router = require('react-router')
 var RouterContext = Router.RoutingContext
 var ReactDOMServer = require('react-dom/server')
-var routes = require('./routes')
+var routes = require('./build/routes.js')
 
 var app = express()
 

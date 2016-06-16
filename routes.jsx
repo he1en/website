@@ -4,9 +4,9 @@ var IndexRoute = ReactRouter.IndexRoute
 var Route = ReactRouter.Route
 var Redirect = ReactRouter.Redirect
 
-var App = require('./build/components/app.js')
-var Home = require('./build/components/home.js')
-var Gender = require('./build/components/gender/frame.js')
+var App = require('./components/app.js')
+var Home = require('./components/home.js')
+var Gender = require('./components/gender/frame.js')
 
 var routes = (
   <Route path='/' component={App}>
