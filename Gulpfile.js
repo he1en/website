@@ -2,8 +2,6 @@ var gulp = require('gulp')
 var browserify = require('gulp-browserify')
 var uglify = require('gulp-uglify')
 var rename = require('gulp-rename')
-var less = require('gulp-less')
-var minifycss = require('gulp-minify-css')
 var clean = require('gulp-clean')
 var react = require('gulp-react')
 
@@ -12,14 +10,17 @@ gulp.task('clean', function () {
 })
 
 // Parse and compress JS and JSX files
-gulp.task('javascript', function () {
+gulp.task('javascript-components', function () {
   return gulp.src('client/components/**/*.jsx')
     .pipe(react())
     .pipe(gulp.dest('build/components/'))
-    .pipe(uglify())
-    .pipe(rename({suffix: '.min'}))
-    .pipe(gulp.dest('build/components/'))
 })
+gulp.task('javascript-routes', function () {
+  return gulp.src('routes.jsx')
+    .pipe(react())
+    .pipe(gulp.dest('build/'))
+})
+
 
 // Browserify the source tree into a client-side library
 function browserifyTask () {
@@ -34,7 +35,7 @@ function browserifyTask () {
     .pipe(gulp.dest('public/'))
 }
 
-gulp.task('browserify', ['javascript'], browserifyTask)
+gulp.task('browserify', ['javascript-components', 'javascript-routes'], browserifyTask)
 gulp.task('browserify_nodep', browserifyTask)
 
 gulp.task('default', ['clean'], function () {

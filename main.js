@@ -1,7 +1,7 @@
 var React = require('react')
 var ReactDOM = require('react-dom')
 var Router = require('react-router').Router
-var routes = require('./routes')
+var routes = require('./build/routes.js')
 var createHistory = require('history').createHistory
 
 var mountNode = document.getElementById('container')
