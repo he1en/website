@@ -45,9 +45,11 @@ function router (req, res) {
       res.redirect(301, redirectLocation.pathname + redirectLocation.search)
     } else if (err) {
       res.send(500, err.message)
-    } else if (renderProps === null) {
-      res.status(404)
-        .send('Not found')
+    } else if (renderProps === undefined) {
+      var NotFound = React.createFactory(
+        require('./build/components/not-found.js'))
+      res.render('index.ejs',
+                 {content: ReactDOMServer.renderToString(NotFound({}))})
     } else {
       res.render('index.ejs', {content: ReactDOMServer.renderToString(
         React.createElement(RouterContext,
@@ -64,11 +66,5 @@ function router (req, res) {
   })
 }
 app.use(router)
-
-// set 404
-app.get('*', function (req, res) {
-  var NotFound = React.createFactory(require('./client/components/not-found.jsx'))
-  res.render('index.ejs', {content: React.renderToString(NotFound({}))})
-})
 
 module.exports = app

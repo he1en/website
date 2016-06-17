@@ -7,6 +7,7 @@ var Redirect = ReactRouter.Redirect
 var App = require('./components/app.js')
 var Home = require('./components/home.js')
 var Gender = require('./components/gender/frame.js')
+var NotFound = require('./components/not-found.js')
 
 var routes = (
   <Route path='/' component={App}>
@@ -17,6 +18,7 @@ var routes = (
     <Route path='/gender/video' component={Gender} tab={2} />
     <Route path='/gender/about' component={Gender} tab={3} />
     <Route path='/gender/viewcases' component={Gender} tab={4} />
+    <Route path='*' component={ NotFound } />
   </Route>
 )
 
