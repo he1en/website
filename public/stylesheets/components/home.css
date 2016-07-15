@@ -1,0 +1,44 @@
+.home-container {
+  width: 100%;
+  height: 100%;
+}
+
+.section {
+  width: 100%;
+  height: 100%;
+}
+
+.hello-container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -275px;
+  margin-top: -100px;
+}
+
+.home-hello {
+  font-size: 70px;
+  line-height: 70px;
+}
+
+.under-hello {
+  font-size: 23px;
+}
+
+.email-hello {
+  font-size: 14px;
+}
+
+.section-button {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  width: 200px;
+  margin-left: -100px;
+  border-radius: 6px 6px 0px 0px;
+}
+
+.section-button-arrow {
+  padding-left: 5px;
+  top: 4px;
+}
