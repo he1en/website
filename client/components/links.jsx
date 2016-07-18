@@ -13,7 +13,7 @@ var Links = React.createClass({
                  'https://linkedin.com/in/helenbhastings']
     return linkNames.map(function (name, index) {
       return (
-         <Col xs={ 6 } sm={ 3 } md={ 3 } lg={ 3 } key={ index }>
+         <Col xs={ 6 } sm={ 6 } md={ 3 } lg={ 3 } key={ index }>
             <Thumbnail className='main-link'
               href={ links[index] } alt={ name } src={ '/img/' + name + '.png' } />
          </Col>
