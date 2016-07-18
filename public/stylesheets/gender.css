@@ -1,0 +1,33 @@
+body {
+  font: 10px sans-serif;
+}
+
+a.linklessAnchor, a.linklessAnchor:visited, a.linklessAnchor:hover {
+  text-decoration: inherit;
+  color: inherit;
+  cursor: auto;
+}
+
+.axis {
+  shape-rendering: crispEdges;
+}
+
+.x.axis path {
+  display: none;
+  stroke: #000;
+}
+
+.y.axis line, .y.axis path {
+  fill: none;
+  stroke: #000;
+}
+
+.citation {
+  font-style: italic;
+  font-size: 10px;
+}
+
+.graphTitle {
+  font-size: 15px;
+  font-weight: 500;
+}
