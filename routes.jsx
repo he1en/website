@@ -9,8 +9,9 @@ var NotFound = require('./components/not-found.js')
 
 var routes = (
   <Route path='/' component={App}>
-    <IndexRoute component={Home} />
-    <Route path='*' component={ NotFound } />
+    <IndexRoute component={Home} section={0} />
+    <Route path='/links' component={Home} section={1} />
+    <Route path='*' component={NotFound} />
   </Route>
 )
 

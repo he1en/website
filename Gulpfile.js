@@ -4,6 +4,7 @@ var uglify = require('gulp-uglify')
 var rename = require('gulp-rename')
 var clean = require('gulp-clean')
 var react = require('gulp-react')
+var sass = require('gulp-sass')
 
 gulp.task('clean', function () {
   return gulp.src(['build/*'], {read: false}).pipe(clean())
@@ -21,7 +22,6 @@ gulp.task('javascript-routes', function () {
     .pipe(gulp.dest('build/'))
 })
 
-
 // Browserify the source tree into a client-side library
 function browserifyTask () {
   return gulp.src('main.js')
@@ -35,9 +35,19 @@ function browserifyTask () {
     .pipe(gulp.dest('public/'))
 }
 
-gulp.task('browserify', ['javascript-components', 'javascript-routes'], browserifyTask)
-gulp.task('browserify_nodep', browserifyTask)
+// Compile sass to css
+gulp.task('build-css', function () {
+  return gulp.src('sass/main.scss')
+    .pipe(sass().on('error', sass.logError))
+    .pipe(gulp.dest('public/css'))
+})
 
-gulp.task('default', ['clean'], function () {
+gulp.task('browserify',
+          ['javascript-components', 'javascript-routes'],
+          browserifyTask)
+
+gulp.task('build', ['clean'], function () {
   return gulp.start('browserify')
 })
+
+gulp.task('default', ['build', 'build-css'])
