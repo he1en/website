@@ -26,7 +26,12 @@ html, body, .content {
   background-color: $slategray;
   border-color: $slategray-dark;
 
-   &:hover {
+   &:hover, &:focus {
      background-color: $slategray-dark;
+     border-color: $slategray-dark;
    }
+}
+
+a.thumbnail:hover {
+  border-color: $slategray-dark;
 }
