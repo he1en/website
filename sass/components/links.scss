@@ -4,5 +4,6 @@
 }
 
 .link-container {
+  @include fadein;
   padding-top: 30px;
 }
