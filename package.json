@@ -26,12 +26,13 @@
     "serve-favicon": "~2.3.0"
   },
   "devDependencies": {
-    "node-jsx": "~0.2.0",
     "gulp": "~3.9.0",
     "gulp-browserify": "~0.5.1",
-    "gulp-uglify": "~1.4.1",
-    "gulp-rename": "~1.2.2",
     "gulp-clean": "~0.3.1",
-    "gulp-react": "~3.0.1"
+    "gulp-react": "~3.0.1",
+    "gulp-rename": "~1.2.2",
+    "gulp-sass": "^2.3.2",
+    "gulp-uglify": "~1.4.1",
+    "node-jsx": "~0.2.0"
   }
 }

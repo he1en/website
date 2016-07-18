@@ -1,0 +1,9 @@
+.main-link.thumbnail {
+  border: 2px solid #BDBDBD;
+  opacity: 0.8;
+}
+
+.link-container {
+  @include fadein;
+  padding: 75px;
+}
