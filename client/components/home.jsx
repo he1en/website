@@ -3,6 +3,7 @@ var Button = require('react-bootstrap').Button
 var Glyphicon = require('react-bootstrap').Glyphicon
 
 var Links = require('./links.js')
+var BubbleContainer = require('./bubble-container.js')
 
 var Link = require('react-router').Link
 
@@ -42,11 +43,18 @@ var Home = React.createClass({
   renderSection: function () {
     if (this.state.section === 0) {
       return (
-        <div className='hello-container'>
-          <div className='home-hello'>Hi, I&rsquo;m Helen.</div>
-          <div className='under-hello'>I&rsquo;m a student and software engineer.</div>
-          <div className='email-hello'>While I clean things up around here, reach me at helenh (at) cs (dot) stanford (dot) edu.</div>
-        </div>
+        <BubbleContainer>
+          <div className='hello-container'>
+            <div className='home-hello'>Hi, I&rsquo;m Helen.</div>
+            <div className='under-hello'>
+              I&rsquo;m a student and software engineer.
+            </div>
+            <div className='email-hello'>
+              While I clean things up around here, reach me at helenh (at) cs
+              (dot) stanford (dot) edu.
+            </div>
+          </div>
+        </BubbleContainer>
       )
     }
 

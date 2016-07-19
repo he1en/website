@@ -12,6 +12,9 @@
 
 .hello-container {
   @include fadein;
+  background: rgba(256, 256, 256, 0.85);
+  border-radius: 10px;
+  padding: 10px;
   position: absolute;
   left: 50%;
   top: 50%;
