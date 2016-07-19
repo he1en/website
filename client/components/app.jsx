@@ -1,8 +1,17 @@
 var React = require('react')
 
 var App = React.createClass({
+
+  propTypes: {
+    children: React.PropTypes.object
+  },
+
   render: function () {
-    return <div>{ this.props.children }</div>
+    return (
+      <div className='app-container'>
+        { this.props.children }
+      </div>
+    )
   }
 })
 
