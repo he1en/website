@@ -57,11 +57,11 @@ var Bubble = React.createClass({
   },
 
   chooseRandomColor: function () {
-    var colors = ['#6E8894', '#8B2635', '#85BAA1', '#B8C4BB', '#0A2463',
-                  '#3D2B3D']
+    var colors = ['#3D2B3D', '#6E8894', '#8B2635', '#85BAA1', '#B8C4BB',
+                  '#0A2463']
     /* using a random index prevents isomorphism? */
     var ind =
-      (this.props.cx % 3 * this.props.cy % 7 * this.props.r % 5) % colors.length
+      (this.props.cx % 3 + this.props.cy % 7 * this.props.r % 5) % colors.length
     return colors[ind]
   },
 
