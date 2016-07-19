@@ -32,7 +32,6 @@ var Bubble = React.createClass({
   },
 
   split: function () {
-    console.log('split')
     this.setState(function (previousState, currentProps) {
       return {splitNum: previousState.splitNum + 1}
     })
